@@ -30,7 +30,7 @@ function M.setup()
 				return
 			end
 
-			local filename = vim.fs.basename(ev.file)
+			local filename = vim.fn.expand("%:p"):gsub(conf.opts.root_dir, ""):gsub("\\", "/")
 			local lines = vim.api.nvim_buf_get_lines(ev.buf, 0, -1, false)
 			local contents = table.concat(lines, "\n")
 

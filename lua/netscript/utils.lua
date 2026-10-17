@@ -12,7 +12,7 @@ function M.write_file(filename, content, skip_ext_filter)
 		end
 	end
 
-	local path = assert(vim.uv.cwd(), "failed to get cwd") .. "/" .. filename
+	local path = conf.opts.root_dir .. "/" .. filename
 
 	vim.fn.mkdir(vim.fn.fnamemodify(path, ":h"), "p")
 
