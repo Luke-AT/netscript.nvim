@@ -14,6 +14,8 @@ function M.write_file(filename, content, skip_ext_filter)
 
 	local path = assert(vim.uv.cwd(), "failed to get cwd") .. "/" .. filename
 
+	vim.fn.mkdir(vim.fn.fnamemodify(path, ":h"), "p")
+
 	local fd =
 		assert(vim.uv.fs_open(path, "w", 420), string.format("failed to open file handle when writing '%s'", filename))
 
